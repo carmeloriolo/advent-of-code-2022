@@ -43,7 +43,7 @@ def solve_part_two(input_file):
 
 if __name__ == '__main__':
     dir_path = os.getcwd()
-    fd = open(f"{dir_path}/../inputs/{INPUT_FILE}")
+    fd = open(f"{dir_path}/inputs/{INPUT_FILE}")
 
     # print(solve_part_one(fd))
     print(solve_part_two(fd))

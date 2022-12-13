@@ -30,12 +30,31 @@ def solve_part_one(input_file):
 
 
 def solve_part_two(input_file):
-    pass
+    priorities_sum = 0
+    arr = [0] * 128
+    rucksack_dict = {}
+    count = 0
+    for line in input_file:
+        count += 1
+        rucksack = line.strip()
+        for s in rucksack:
+            if s not in rucksack_dict:
+                rucksack_dict[s] = 1
+                arr[ord(s)] += 1
+        if count == 3:
+            for k, v in enumerate(arr):
+                if v == 3:
+                    priorities_sum += k - 96 if k > 96 else k - 38
+                arr[k] = 0
+            count = 0
+        rucksack_dict.clear()
+
+    return priorities_sum
 
 
 if __name__ == '__main__':
     dir_path = os.getcwd()
     fd = open(f"{dir_path}/inputs/{INPUT_FILE}")
 
-    print(solve_part_one(fd))
-    # print(solve_part_two(fd))
+    # print(solve_part_one(fd))
+    print(solve_part_two(fd))
